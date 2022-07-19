@@ -54,7 +54,9 @@ void UWBP_QTE_Main::Start(FStartQTEStruct const &Data )
 			break;
 		}
 	}
+	//UGameplayStatics::GetGlobalTimeDilation()
 	
+	UGameplayStatics::SetGlobalTimeDilation(GetWorld(),Data.MaxTime/10);
 	AddToViewport();
 }
 
@@ -89,6 +91,6 @@ void UWBP_QTE_Main::End(bool bSuccess)
 		GameInstanceSubsystem_QTE->QTE_Line->RemoveFromParent();
 		GameInstanceSubsystem_QTE->QTE_Line = nullptr;
 	}
-	
+	UGameplayStatics::SetGlobalTimeDilation(GetWorld(),1.0f);
 	RemoveFromParent();
 }
